@@ -12,15 +12,15 @@ Concurrency is pretty good up until about 100 users.  Puma (the webserver used f
 
 What documentation, websites, papers, etc did you consult in doing this assignment?
 
-Mostly just some ruby docs to make sure I was using standard apis correctly.
+Mostly just some ruby docs to make sure I was using standard apis correctly.  There were a few stack overflow questions around file descriptors and some other sysctl stuff to try and eek out a little more concurrency
 
 What third-party libraries or other tools does the system use? How did you choose each library or framework you used?
 
-This system uses sinatra, puma and ruby.  I chose Ruby because it's pretty simple, and the language I am most familiar with.  Sinatra is a decent web layer and middleware that's super easy to use and very lightweight (as opposed to using Rails, for example).  Puma seems to be the best concurrent web server for ruby.
+This system uses sinatra, puma and ruby (with rubygems and bundler).  I chose Ruby because it's pretty simple, and the language I am most familiar with.  Sinatra is a decent web layer and middleware that's super easy to use and very lightweight (as opposed to using Rails, for example).  Puma seems to be the best concurrent web server for ruby.
 
 How long did you spend on this exercise? If you had unlimited more time to spend on this, how would you spend it and how would you prioritize each item?
 
-I spent 3 or 4 hours, most if it just bootstrapping and testing a few things like thin vs puma.
+I spent 3 or 4 hours, most of it just bootstrapping and testing a few things like thin vs puma.
 
 If I had unlimited more time I would:
 1) Write a better file handler (more on this in some other branches!)
