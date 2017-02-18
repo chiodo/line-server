@@ -1,12 +1,27 @@
+require 'thread'
+
+
 class FileFetcher
   def initialize
     #prefetch and load into memory the entire file.
-    @file_array = File.new(ENV['FILENAME']).readlines
+    @semaphore = Mutex.new
+    @file_array = []
+    @file = File.open( ENV['FILENAME'])
+
+    loop do
+      break if not line = @file.gets
+      @file_array[@file.lineno] = @file.pos
+    end
   end
 
   def get_line(number)
     raise RequestedIndexError.new if number >= @file_array.length
-    @file_array[number]
+    seek_pos = @file_array[number]
+    @semaphore.synchronize do
+      @file.pos = seek_pos
+      @file.readline
+    end
+
   end
 end
 

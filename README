@@ -1,11 +1,9 @@
 How does your system work? (if not addressed in comments in source)
 
-The system consists of a super simple Sinatra app with 2 routes: a root context, and one for '/lines'. The lines context delegates to a simple class called FileFetcher that handles the logic for getting the line.  That class preloads the file entirely into memory into an array with one element per line of the file.  Access is then simply "get me the index in the array".  Error handling is then "did you ask for a line that's beyond the size or equal to the length of our array?".
-
-In this version of the server, I went for "simple" over "can scale massively".
+The system consists of a super simple Sinatra app with 2 routes: a root context, and one for '/lines'. The lines context delegates to a simple class called FileFetcher that handles the logic for getting the line.  The filefetcher indexes the file by reading one line at a time, and marking the offset of that line in the file in an array.  Then when we fetch the line later, we seek to the position referenced in the file, read the line, and move along.
 
 How will your system perform with a 1 GB file? a 10 GB file? a 100 GB file?
-This version will do well up to whatever reasonable limit the system can allocate for memory.  So, if your file is 2GB, and you have 2GB of memory 'free', then this will work fine.  This approach is pretty suboptimal for files larger than will fit in memory.
+This version is SUPER memory efficient.  I loaded a 10GB file, and it only took around 75MB of memory.  It would be pretty easy to scale this horizontally on a node.  This comes at the price of speed, however, because every request requires a seek and subsequent read of a line in the file.  Startup time is pretty slow, too, but for a 10GB file it took maybe 30 seconds, which is tolerable.
 
 How will your system perform with 100 users? 10000 users? 1000000 users?
 Concurrency is pretty good up until about 100 users.  Puma (the webserver used for this) has no connection buffering, so at some point above 100, connections get dropped.  To scale this more broadly, I'd scale horizontally, first on a single server up until memory constraints were an issue, then across multiple machines.  Alternatively, we could use something like passenger which would handle the connection buffering for us.
