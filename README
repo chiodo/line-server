@@ -18,7 +18,7 @@ This system uses sinatra, puma and ruby (with rubygems and bundler).  I chose Ru
 
 How long did you spend on this exercise? If you had unlimited more time to spend on this, how would you spend it and how would you prioritize each item?
 
-I spent 3 or 4 hours, most of it just bootstrapping and testing a few things like thin vs puma.
+I spent 3 or 4 hours, most of it just bootstrapping and testing a few things like thin vs puma. (+15-30 minutes for this branch with the different fetching model)
 
 If I had unlimited more time I would:
 1) Write a better file handler (more on this in some other branches!)
