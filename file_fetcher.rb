@@ -11,7 +11,8 @@ class FileFetcher
 end
 
 #I created this custom error class as a means to abstract away the
-# way we determine if the requested line number was too big.
+# way we determine if the requested line number was too big.  This lets the app class not need
+#the internals exposed.
 class RequestedIndexError < StandardError
   def initialize(msg='Request exceeds size of file')
     super
