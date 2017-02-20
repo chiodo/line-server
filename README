@@ -27,4 +27,4 @@ If I had unlimited more time I would:
 
 If you were to critique your code, what would you have to say about it?
 
-I think the code is very simple and easy to understand.  Its error handling is pretty declarative (although not overly comprehensive), and there's not much left to the imagination here.  I like the simplicity of this, but it certainly has some scaling concerns.
+I think the code is very simple and easy to understand.  Its error handling is pretty declarative (although not overly comprehensive), and there's not much left to the imagination here.  I like the simplicity of this, but it certainly has some scaling concerns.  My biggest critique would be that it's only really part of an implementation.  It needs some good horizontal scaling
