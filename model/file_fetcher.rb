@@ -2,7 +2,6 @@ require 'thread'
 class FileFetcher
 
   def self.preload(filename)
-    #prefetch and load into memory the entire file.
     @@FILE_ARRAY = []
     @@FILE = File.open(filename)
     @@SEMAPHORE = Mutex.new
