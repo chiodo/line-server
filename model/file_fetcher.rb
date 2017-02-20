@@ -1,12 +1,13 @@
 class FileFetcher
-  def initialize
+
+  def self.preload(filename)
     #prefetch and load into memory the entire file.
-    @file_array = File.new(ENV['FILENAME']).readlines
+    @@FILE_ARRAY = File.new(filename).readlines
   end
 
-  def get_line(number)
-    raise RequestedIndexError.new if number >= @file_array.length
-    @file_array[number]
+  def self.get_line(number)
+    raise RequestedIndexError.new if number >= @@FILE_ARRAY.length
+    @@FILE_ARRAY[number]
   end
 end
 
