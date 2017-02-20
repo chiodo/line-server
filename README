@@ -21,9 +21,10 @@ How long did you spend on this exercise? If you had unlimited more time to spend
 I spent 3 or 4 hours, most of it just bootstrapping and testing a few things like thin vs puma. (+15-30 minutes for this branch with the different fetching model)
 
 If I had unlimited more time I would:
-1) Write a better file handler (more on this in some other branches!)
-2) Scale it horizontally on a single server (maybe use a simple Docker image with nginx)
-3) Scale it horizontally on multiple servers
+1) Write a better file handler
+2) Add a small in memory cache.  Might be able to eek some performance out using a LRU cache, but that's entirely dependent on access patterns.
+3) Scale it horizontally on a single server (maybe use a simple Docker image with nginx for connection buffering and load balancing)
+4) Scale it horizontally on multiple servers.
 
 If you were to critique your code, what would you have to say about it?
 
