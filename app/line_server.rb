@@ -7,6 +7,8 @@ class LineServer < Sinatra::Base
 
   get '/lines/:line' do
     begin
+      #Pretty simply, get the requested line.  Note Sinatra will
+      #automatically return 404 if the parameter is missing.
       FileFetcher.get_line(params['line'].to_i)
     rescue RequestedIndexError
       halt(413)
