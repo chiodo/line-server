@@ -1,7 +1,12 @@
 require './config/environment'
 
 configure do
-  raise 'You must specify a valid filename' unless ENV['FILENAME']
+  if ENV['FILENAME'].empty?
+    puts 'You must specify a filename. Halting startup'
+    exit(1)
+  end
+
+  #Preload the file at startup time.
   FileFetcher.preload(ENV['FILENAME'])
 end
 
